@@ -1,4 +1,5 @@
 // تحديث النقاط عند الإجابة الصحيحة
+const API_URL = window.location.origin + '/api';
 app.post('/api/answer', auth, async (req,res)=>{
   const { questionId, answer } = req.body;
   const question = await Question.findById(questionId);
@@ -8,11 +9,13 @@ app.post('/api/answer', auth, async (req,res)=>{
   if(question.answer === answer){
     correct = true;
     // تحديث نقاط المستخدم
+    const API_URL = window.location.origin + '/api';
     const user = await User.findById(req.user.id);
     user.points += 1;
     await user.save();
 
     // تحديث نقاط الفريق إن وجد
+   const API_URL = window.location.origin + '/api'; 
     if(user.team){
       const team = await Team.findById(user.team);
       team.points += 1;
@@ -22,6 +25,7 @@ app.post('/api/answer', auth, async (req,res)=>{
   res.json({correct});
 });
 // تحديث النقاط عند الإجابة الصحيحة
+const API_URL = window.location.origin + '/api';
 app.post('/api/answer', auth, async (req,res)=>{
   const { questionId, answer } = req.body;
   const question = await Question.findById(questionId);
@@ -32,6 +36,7 @@ app.post('/api/answer', auth, async (req,res)=>{
     correct = true;
     
   // تحديث النقاط عند الإجابة الصحيحة
+   const API_URL = window.location.origin + '/api'; 
 app.post('/api/answer', auth, async (req,res)=>{
   const { questionId, answer } = req.body;
   const question = await Question.findById(questionId);
